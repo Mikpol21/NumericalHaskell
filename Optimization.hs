@@ -4,13 +4,13 @@ import Functions
 
 
 gradientDescent :: Minimizer (Vector R)
-gradientDescent = defaultdefaultMinimizer gradientMethod defaultMaxIter
+gradientDescent = defaultMinimizer gradientMethod defaultMaxIter
 
 conjugateDescent :: Minimizer (Vector R)
-conjugateDescent = defaultdefaultMinimizer conjugateMethod defaultMaxIter
+conjugateDescent = defaultMinimizer conjugateMethod defaultMaxIter
 
 newtonsMethod :: Minimizer (Vector R)
-newtonsMethod = defaultdefaultMinimizer newtonTransition defaultMaxIter
+newtonsMethod = defaultMinimizer newtonTransition defaultMaxIter
 
 
 ------------------------------ Gradient descent's core ------------------------------
@@ -105,8 +105,8 @@ getStartingParams f x = Params x dir dx fx 10.0 0
             dir = (-1.0) * dx
             fx = func f x
 
-defaultdefaultMinimizer :: NextIteration R -> Int -> Minimizer (Vector R)
-defaultdefaultMinimizer nextit n f x = paramsX $ descentKernel f start (withBacktracking nextit) stop
+defaultMinimizer :: NextIteration R -> Int -> Minimizer (Vector R)
+defaultMinimizer nextit n f x = paramsX $ descentKernel f start (withBacktracking nextit) stop
     where   start = getStartingParams f x
             stop = maxiter n `orWhen` magnitudeOfGradient x
 
