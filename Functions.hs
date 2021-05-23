@@ -1,6 +1,7 @@
 module Functions where
 import Numeric.LinearAlgebra
 
+
 data Function a = Multivariate {func ::     a -> R,
                                 gradient :: a -> Vector R,
                                 hessian ::  a -> Maybe (Matrix R)} |
@@ -20,16 +21,8 @@ derivative = func . derivatives
 toUniFunction :: [R -> R] -> Function R
 toUniFunction = foldr Univariate Bottom
 
-------------------------------  Example functions ------------------------------ 
 
-easy :: Function (Vector R)
-easy = Multivariate (\x -> (x - vector [1, 2, 3]) `dot` (x - vector [1, 2, 3]))
-                (\x -> 2.0 * (x - vector [1, 2, 3]))
-                (const Nothing)
+identity :: Int ->  Matrix R
+identity n = (n><n) $ concatMap (map (\x -> if x then 1.0 else 0.0)) [[x == y | x <- [1..n]] | y <- [1..n]]
 
-square :: Function R
-square = toUniFunction [\x -> x*x - sqrt 3, (2*)]
-
-someExp :: Function R
-someExp = toUniFunction [\x -> x * exp x - 2, \x -> exp x + x * exp x]
 

@@ -1,5 +1,9 @@
+module Optimization where
+
+
 import Numeric.LinearAlgebra hiding (magnitude)
 import Functions
+
 ------------------------------ Optimization ------------------------------
 
 
@@ -34,7 +38,7 @@ data Params a = Params {paramsX ::          Vector a,    -- x
 armijo, ro, tolerance:: R
 armijo = 10.0**(-4)
 ro = 0.5
-tolerance = 10 ** (-5)
+tolerance = 10 ** (-10)
 
 defaultMaxIter :: Int
 defaultMaxIter = 50
