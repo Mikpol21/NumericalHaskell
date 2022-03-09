@@ -1,4 +1,4 @@
 # NumericalHaskell
 ## Implemented 
-### - Gradient Descent (Optimisation.hs)
+### - Gradient Descent (Optimization.hs)
 ### - Various integration methods (Integration.hs)
